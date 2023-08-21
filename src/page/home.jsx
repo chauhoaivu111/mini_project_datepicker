@@ -1,38 +1,29 @@
-import React, { useState } from "react";
-import DatePicker from "../components/datePicker";
+import React, { useState } from 'react';
+import Calendar from '../components/datePicker'; // Make sure to provide the correct path to your Calendar component
 
-const Home = () => {
+const ParentComponent = () => {
+  const [combinedValue, setCombinedValue] = useState('');
 
-    const [valuePicker1,setValuePicker1] = useState("")
-    const [valuePicker2,setValuePicker2] = useState("")
+  const handleCombinedValueChange = (value) => {
+    setCombinedValue(value);
+  };
 
+  const [combinedValue2, setCombinedValue2] = useState('');
 
-    const handleChange1 = (e) => {
-        const value = e.target.value
-        setValuePicker1(value)
-    }
-
-    
-    const handleChange2 = (e) => {
-        const value = e.target.value
-        setValuePicker2(value)
-    }
+  const handleCombinedValueChange2 = (value) => {
+    setCombinedValue2(value);
+  };
 
   return (
     <div>
-      <div>
-        <h1>date picker have value default</h1>
-        <DatePicker current={true} onChange ={handleChange1} />
-        <p>date:{valuePicker1}</p>
-      </div>
+  
+      <Calendar onCombinedValueChange={handleCombinedValueChange} />
+      <p>Combined Value: {combinedValue}</p>
 
-      <div>
-        <h1>date pciker not have value default</h1>
-        <DatePicker onChange = {handleChange2} />
-        <p>date:{valuePicker2}</p>
-      </div>
+      <Calendar onCombinedValueChange={handleCombinedValueChange2} />
+      <p>Combined Value: {combinedValue2}</p>
     </div>
   );
 };
 
-export default Home;
+export default ParentComponent;

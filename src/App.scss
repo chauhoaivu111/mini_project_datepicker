@@ -1,0 +1,40 @@
+/* Add this CSS to your component's stylesheet or in a separate CSS file */
+
+/* Styling for the DatePicker */
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+  }
+  
+  /* Highlighting the selected day */
+  button.selected {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Adding some hover effect */
+  button.selected:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styling for the current day */
+  button.today {
+    background-color: #ffc107;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Adding some hover effect */
+  button.today:hover {
+    background-color: #e0a800;
+  }
+  
