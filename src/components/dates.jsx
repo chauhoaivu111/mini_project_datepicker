@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DatePicker = ({ selectedDate, onSelectDate }) => {
+const DatePicker = ({ selectedDate, onSelectDate,today }) => {
   const isLeapYear = year => (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
   const daysInMonth = [
     31, isLeapYear(selectedDate.year) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
@@ -12,7 +12,9 @@ const DatePicker = ({ selectedDate, onSelectDate }) => {
     onSelectDate(day);
   };
 
-  console.log(selectedDate)
+  console.log("today",today)
+
+  console.log("date",selectedDate.day)
 
   return (
     <table>
@@ -32,11 +34,12 @@ const DatePicker = ({ selectedDate, onSelectDate }) => {
           <tr key={rowIndex}>
             {Array.from({ length: 7 }, (_, dayIndex) => {
               const dayNumber = rowIndex * 7 + dayIndex + 1;
+        
               return dayNumber <= daysInMonth[selectedDate.month] ? (
                 <td key={dayNumber}>
                   <button
                     onClick={() => handleDayClick(dayNumber)}
-                    className={dayNumber === +selectedDate.day ? 'selected' : ''}
+                    className={dayNumber === +selectedDate.day && today === selectedDate.day ? 'selected' : ''}
                   >
                     {dayNumber}
                   </button>

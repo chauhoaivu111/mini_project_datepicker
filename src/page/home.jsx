@@ -20,8 +20,8 @@ const ParentComponent = () => {
       <Calendar onCombinedValueChange={handleCombinedValueChange} />
       <p>Combined Value: {combinedValue}</p>
 
-      <Calendar onCombinedValueChange={handleCombinedValueChange2} />
-      <p>Combined Value: {combinedValue2}</p>
+      {/* <Calendar onCombinedValueChange={handleCombinedValueChange2} />
+      <p>Combined Value: {combinedValue2}</p> */}
     </div>
   );
 };

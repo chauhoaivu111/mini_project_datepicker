@@ -13,6 +13,10 @@ const Calendar = ({ onCombinedValueChange }) => {
     day: currentDate.getDate()
   });
 
+  
+  const today =  currentDate.getDate()
+  // console.log("today",today)
+
   const handleYearChange = year => {
     setSelectedYear(year);
     setSelectedDate(prevDate => ({ ...prevDate, year }));
@@ -31,7 +35,8 @@ const Calendar = ({ onCombinedValueChange }) => {
 
   onCombinedValueChange(combinedValue);
 
-  console.log("check", selectedDate)
+  console.log("check", selectedDate.day)
+
 
 
   return (
@@ -39,7 +44,7 @@ const Calendar = ({ onCombinedValueChange }) => {
       <h2>Calendar</h2>
       <YearPicker selectedYear={selectedYear} onSelectYear={handleYearChange} />
       <MonthPicker selectedMonth={selectedMonth} onSelectMonth={handleMonthChange} />
-      <DatePicker selectedDate={selectedDate} onSelectDate={handleDateChange}
+      <DatePicker selectedDate={selectedDate} onSelectDate={handleDateChange} today={today}
 
       />
     </div>
