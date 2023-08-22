@@ -1,0 +1,47 @@
+
+
+.main-popover{
+
+    width: 20%;
+    height: 20rem;
+    // background-color: red;
+    border: 1px solid grey;
+    // margin: auto;
+    // justify-content: center;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    overflow-y: auto;
+
+
+
+    button {
+        list-style-type: none;
+        width: 80%;
+        // background-color: aqua;
+        text-align: center;
+        margin-top: 1rem;
+        height: 2rem;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        // can reduce button height
+        border: 0px;
+        cursor: pointer;
+    }
+
+    
+}
+
+.buttonfocus {
+        background-color: rgb(143, 180, 239);
+    
+    }
+
+
+.buttonToday {
+
+    border: 1.5px solid rgb(4, 4, 4) !important;
+  
+    
+}
