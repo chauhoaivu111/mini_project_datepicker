@@ -4,7 +4,7 @@ import DatePicker from "../components/datePicker";
 const Home = () => {
   const [combinedValue, setCombinedValue] = useState("");
 
-  console.log(combinedValue);
+  // console.log(combinedValue);
 
   return (
     <div className="App">

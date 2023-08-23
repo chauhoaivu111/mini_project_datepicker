@@ -34,7 +34,7 @@ const DatePicker = ({ onChange, value, combineValue, current }) => {
     }
   }, [formatValue, combineValue, current]);
 
-  console.log("type", typeof selectedMonth);
+  // console.log("type", typeof selectedMonth);
 
   const [open, setOpen] = useState(false);
 
