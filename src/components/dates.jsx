@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DatePicker = ({ selectedDate, onSelectDate,today }) => {
+const DatePicker = ({ selectedDate, onSelectDate, today }) => {
   const isLeapYear = year => (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
   const daysInMonth = [
     31, isLeapYear(selectedDate.year) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
@@ -12,9 +12,7 @@ const DatePicker = ({ selectedDate, onSelectDate,today }) => {
     onSelectDate(day);
   };
 
-  console.log("today",today)
-
-  console.log("date",selectedDate.day)
+  const firstDayOfMonth = new Date(selectedDate.year, selectedDate.month, 1).getDay();
 
   return (
     <table>
@@ -30,22 +28,31 @@ const DatePicker = ({ selectedDate, onSelectDate,today }) => {
         </tr>
       </thead>
       <tbody>
-        {Array.from({ length: Math.ceil(days.length / 7) }, (_, rowIndex) => (
+        {Array.from({ length: Math.ceil((days.length + firstDayOfMonth) / 7) }, (_, rowIndex) => (
           <tr key={rowIndex}>
             {Array.from({ length: 7 }, (_, dayIndex) => {
-              const dayNumber = rowIndex * 7 + dayIndex + 1;
-        
-              return dayNumber <= daysInMonth[selectedDate.month] ? (
-                <td key={dayNumber}>
-                  <button
-                    onClick={() => handleDayClick(dayNumber)}
-                    className={dayNumber === +selectedDate.day && today === selectedDate.day ? 'selected' : ''}
-                  >
-                    {dayNumber}
-                  </button>
+              const dayNumber = rowIndex * 7 + dayIndex - firstDayOfMonth + 1;
+              const isDayValid = dayNumber >= 1 && dayNumber <= daysInMonth[selectedDate.month];
+              const isEmptyCell = dayNumber < 1 || dayNumber > daysInMonth[selectedDate.month];
+
+              return (
+                <td key={dayIndex}>
+                  {!isEmptyCell && (
+                    <button
+                      onClick={() => isDayValid && handleDayClick(dayNumber)}
+                      className={
+                        isDayValid &&
+                        dayNumber === +selectedDate.day &&
+                        today === selectedDate.day
+                          ? 'selected'
+                          : ''
+                      }
+                      disabled={!isDayValid}
+                    >
+                      {isDayValid ? dayNumber : ''}
+                    </button>
+                  )}
                 </td>
-              ) : (
-                <td key={dayIndex}></td>
               );
             })}
           </tr>
