@@ -4,7 +4,7 @@ const buttonArrow = ({ value, getValue, handle, direction }) => {
   const currentIndex = value.indexOf(getValue);
 
   const handleClick = () => {
-    if ((direction === "next") & (currentIndex < value.length - 1)) {
+    if ((direction === "next") && (currentIndex < value.length - 1)) {
       handle(value[currentIndex + 1]);
     } else if (direction === "previous" && currentIndex > 0) {
       handle(value[currentIndex - 1]);
