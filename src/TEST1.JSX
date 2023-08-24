@@ -1,6 +1,6 @@
 import React from "react";
 
-const Dates = ({ selectedDate, handleChangeDates, today }) => {
+const dates = ({ selectedDate, handleChangeDates, today }) => {
   const isLeapYear = (year) => {
     if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
       return true;
@@ -23,11 +23,20 @@ const Dates = ({ selectedDate, handleChangeDates, today }) => {
     30,
     31,
   ];
-
+  console.log(selectedDate.month);
+  console.log("maxdate flollow index month", daysInMonth[selectedDate.month]);
+  // 1+ ...31
   const listDays = Array.from(
     { length: daysInMonth[selectedDate.month] },
     (_, index) => index + 1
   );
+
+  console.log("listday", listDays);
+
+  console.log("passmonth",selectedDate.month);
+  console.log(daysInMonth);
+  console.log(selectedDate.year);
+  console.log(isLeapYear(selectedDate.year));
 
   const orderOfDay = new Date(
     selectedDate.year,
@@ -35,28 +44,13 @@ const Dates = ({ selectedDate, handleChangeDates, today }) => {
     1
   ).getDay();
 
-  const generateDayCells = (row) => {
-    const dayCells = [];
-
-    for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
-      const dayNumber = (row - 1) * 7 + dayIndex - orderOfDay + 1;
-      const isDayValid =
-        dayNumber >= 1 && dayNumber <= daysInMonth[selectedDate.month];
-
-      dayCells.push(
-        <td key={dayIndex}>
-          {isDayValid && <button>{dayNumber}</button>}
-        </td>
-      );
-    }
-
-    return dayCells;
-  };
+  console.log("firstdateflowWeek", orderOfDay);
 
   const weekRows = Array.from(
     { length: Math.ceil((listDays.length + orderOfDay) / 7) },
     (_, index) => index + 1
   );
+  console.log("row", weekRows);
 
   return (
     <div className="main-date">
@@ -74,12 +68,16 @@ const Dates = ({ selectedDate, handleChangeDates, today }) => {
         </thead>
         <tbody>
           {weekRows.map((row) => (
-            <tr key={row}>{generateDayCells(row)}</tr>
+            <tr key={row}>
+              <td>dsfsfs</td>
+            </tr>
           ))}
         </tbody>
+
+        <tbody></tbody>
       </table>
     </div>
   );
 };
 
-export default Dates;
+export default dates;

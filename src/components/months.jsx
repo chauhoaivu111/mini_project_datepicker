@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React from "react";
 
 const Month = ({ selectedMonth, selectedYears, handleChangeMonths }) => {
   const months = [
@@ -18,15 +18,18 @@ const Month = ({ selectedMonth, selectedYears, handleChangeMonths }) => {
 
   const handleChangeMonth = (monthChange) => {
     const monthsInYear = 12;
-    const totalMonths = (selectedYears * monthsInYear) + parseInt(selectedMonth) + parseInt(monthChange);
-    console.log(selectedYears)
-    console.log(typeof(selectedMonth))
-      console.log("total month",totalMonths)
+    const totalMonths =
+      selectedYears * monthsInYear +
+      parseInt(selectedMonth) +
+      parseInt(monthChange);
+    // console.log(selectedYears)
+    // console.log(typeof(selectedMonth))
+    //   console.log("total month",totalMonths)
     const newMonth = totalMonths % monthsInYear;
-    console.log("newmonth",newMonth)
+    // console.log("newmonth",newMonth)
     const newYear = Math.floor(totalMonths / monthsInYear);
     handleChangeMonths(newMonth, newYear);
-    console.log("newMonth", newMonth);
+    // console.log("newMonth", newMonth);
   };
 
   const handleNextMonth = () => {
@@ -39,25 +42,18 @@ const Month = ({ selectedMonth, selectedYears, handleChangeMonths }) => {
 
   console.log("selected", selectedMonth);
 
-
-  const handleChange  = (e) => {
-    const value = e.target.value 
-    handleChangeMonths(value)
-  }
-
+  const handleChange = (e) => {
+    const value = e.target.value;
+    handleChangeMonths(value);
+  };
 
   return (
     <div className="main-framemonths">
       <button onClick={previous} className="button-icon-prev">
-      ➤
+        ➤
       </button>
       <div className="frame-month-year-head">
-      
-
-        <select
-          value={selectedMonth}
-          onChange={handleChange}
-        >
+        <select value={selectedMonth} onChange={handleChange}>
           {months.map((month, index) => (
             <option key={month} value={index}>
               {month}

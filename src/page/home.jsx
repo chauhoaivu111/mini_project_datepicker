@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import DatePicker from "../components/datePicker";
 
 const Home = () => {
-  const [combinedValue, setCombinedValue] = useState("");
+  const [value, setValue] = useState("");
 
-  // console.log(combinedValue);
+  // console.log(value);
 
   return (
     <div className="App">
-      <DatePicker current={true}  combineValue={setCombinedValue} />
+      <DatePicker current={true}  values={setValue} />
     </div>
   );
 };

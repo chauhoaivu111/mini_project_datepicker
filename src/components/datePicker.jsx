@@ -3,16 +3,32 @@ import React, { useState, useEffect, useRef } from "react";
 import Months from "./months";
 import Dates from "./dates";
 import Years from "./years";
-const DatePicker = ({ onChange, value, combineValue, current }) => {
+const DatePicker = ({ values, current }) => {
   // get current date
   const currentDate = new Date();
-
   const [selectedYear, setSelectedYears] = useState(currentDate.getFullYear());
   const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth());
   const [today, setToday] = useState("");
 
+
+  const [selectedDate,setSelectedDate] = useState({
+    year: selectedYear,
+    month:selectedMonth,
+    day: currentDate.getDate()
+
+  })
+
+  console.log("month",selectedMonth)
+
+
+  const handleChangeYears = (year) => {
+    setSelectedYears(year);
+    setSelectedDate(prev => ({...prev,year}))
+  };
+
   const handleChangeMonths = (month, year) => {
     setSelectedMonth(month);
+    setSelectedDate(prev => ({ ...prev, month }));
 
     if (month === 0) {
       setSelectedYears(year);
@@ -22,17 +38,23 @@ const DatePicker = ({ onChange, value, combineValue, current }) => {
     }
   };
 
-  const handleChangeYears = (year) => {
-    setSelectedYears(year);
-  };
-  const formatValue = `${parseInt(selectedMonth) + 1}-${selectedYear}`;
+  const handleChangeDates = (day) => {
+    setSelectedDate(prev => ({ ...prev, day }));
+
+  }
+
+  
+  const formatValue = `${selectedDate.day}-${parseInt(selectedMonth) + 1}-${selectedYear}`;
+
+
+
 
   useEffect(() => {
-    combineValue(formatValue);
+    values(formatValue);
     if (current === true) {
       setToday(formatValue);
     }
-  }, [formatValue, combineValue, current]);
+  }, [formatValue, values, current]);
 
   // console.log("type", typeof selectedMonth);
 
@@ -77,7 +99,7 @@ const DatePicker = ({ onChange, value, combineValue, current }) => {
               handleChangeMonths={handleChangeMonths}
               selectedYears={selectedYear}
             />
-            <Dates />
+            <Dates selectedDate={selectedDate} handleChangeDates={handleChangeDates} today={today} />
           </div>
         )}
       </div>
