@@ -26,12 +26,13 @@ const [lockYear,setLockyear] = useState()
     handleChangeDates(daymumber);
     setLockmonth(month)
     setLockyear(year)
+    today(selectedDate.month)
    
    
   };
 
  
-  console.log(selectedDate.month)
+  // console.log(selectedDate.month)
 
   const isLeapYear = (year) => {
     if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
@@ -106,11 +107,11 @@ const [lockYear,setLockyear] = useState()
                     : ""
                 }
                 ${
-                  selectedDate.day === dayNumber 
+                  selectedDate.day === dayNumber    && lockMonth === selectedDate.month && lockYear === selectedDate.year
                     ? "button-date"
                     : ""
                 }
-               && lockMonth === selectedDate.month && lockYear === selectedDate.year
+             
                 `}
             >
               {dayNumber}

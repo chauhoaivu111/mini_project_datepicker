@@ -34,7 +34,17 @@ const DatePicker = ({ values, current }) => {
 
   };
 
+  const [previousSelectedMonth, setPreviousSelectedMonth] = useState(selectedMonth);
+  // console.log("previous",previousSelectedMonth)
+
   const handleChangeMonths = (month, year) => {
+
+
+    if (month !== selectedMonth) {
+    
+      setPreviousSelectedMonth(selectedMonth);
+    }
+
     setSelectedMonth(month);
   setSelectedDate((prev) => ({ ...prev, month}));
 
@@ -54,8 +64,19 @@ const DatePicker = ({ values, current }) => {
 
   }
 
+ console.log("testday",selectedDate.day)
+
+const abc = selectedDate.day === currentDate.getDate()
+
+console.log(abc)
+
+const [test,setTest] = useState()
+
+
+console.log("testdatew",test)
+
   
-  const formatValue = `${selectedDate.day}-${parseInt(selectedMonth) +1}-${selectedYear}`;
+  const formatValue = `${selectedDate.day}-${parseInt(selectedDate.month) +1}-${selectedYear}`;
 
 
   // console.log("test",selectedYear)
@@ -111,7 +132,7 @@ const DatePicker = ({ values, current }) => {
               handleChangeMonths={handleChangeMonths}
               selectedYears={selectedYear}
             />
-            <Dates selectedDate={selectedDate} handleChangeDates={handleChangeDates} today={today} />
+            <Dates selectedDate={selectedDate} handleChangeDates={handleChangeDates} today={setTest} />
           </div>
         )}
       </div>

@@ -24,8 +24,8 @@ const Month = ({ selectedMonth, selectedYears, handleChangeMonths }) => {
     const newYear = Math.floor(totalMonths / monthsInYear);
     handleChangeMonths(newMonth, newYear);
 
-    console.log("selectedMonth",selectedMonth)
-    console.log("newmonht",newMonth)
+    // console.log("selectedMonth",selectedMonth)
+    // console.log("newmonht",newMonth)
     
 
 
