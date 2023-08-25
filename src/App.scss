@@ -37,6 +37,7 @@
         border: 0px;
         cursor: pointer;
         font-size: 10px;
+        
     }
 
     
@@ -193,9 +194,19 @@ th {
 
 .button-date {
     background-color: aqua;
+    cursor: pointer;
 
 }
 
 .button-focus-today {
-    background-color:  greenyellow;
+   border: 2px solid gray;
+   background-color: rgb(249, 211, 211);
+   cursor: pointer;
 }
+
+
+button{
+    cursor: pointer;
+}
+
+

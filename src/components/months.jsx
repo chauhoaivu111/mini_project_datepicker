@@ -16,21 +16,24 @@ const Month = ({ selectedMonth, selectedYears, handleChangeMonths }) => {
     "December",
   ];
 
+ 
   const handleChangeMonth = (monthChange) => {
     const monthsInYear = 12;
-    const totalMonths =
-      selectedYears * monthsInYear +
-      parseInt(selectedMonth) +
-      parseInt(monthChange);
-    // console.log(selectedYears)
-    // console.log(typeof(selectedMonth))
-    //   console.log("total month",totalMonths)
+    const totalMonths = selectedYears * monthsInYear + parseInt(selectedMonth) + parseInt(monthChange);
     const newMonth = totalMonths % monthsInYear;
-    // console.log("newmonth",newMonth)
     const newYear = Math.floor(totalMonths / monthsInYear);
     handleChangeMonths(newMonth, newYear);
-    // console.log("newMonth", newMonth);
+
+    console.log("selectedMonth",selectedMonth)
+    console.log("newmonht",newMonth)
+    
+
+
+
+
   };
+
+
 
   const handleNextMonth = () => {
     handleChangeMonth(1);
@@ -40,12 +43,12 @@ const Month = ({ selectedMonth, selectedYears, handleChangeMonths }) => {
     handleChangeMonth(-1);
   };
 
-  console.log("selected", selectedMonth);
 
   const handleChange = (e) => {
     const value = e.target.value;
     handleChangeMonths(value);
   };
+
 
   return (
     <div className="main-framemonths">

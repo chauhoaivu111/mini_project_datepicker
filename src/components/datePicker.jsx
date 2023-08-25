@@ -18,23 +18,34 @@ const DatePicker = ({ values, current }) => {
 
   })
 
-  console.log("month",selectedMonth)
+  useEffect(() => {
+    setSelectedDate((prevDate) => ({
+      ...prevDate,
+      year: selectedYear,
+      month: selectedMonth,
+    }));
+  }, [selectedYear, selectedMonth]);  
+
+
 
 
   const handleChangeYears = (year) => {
     setSelectedYears(year);
-    setSelectedDate(prev => ({...prev,year}))
+
   };
 
   const handleChangeMonths = (month, year) => {
     setSelectedMonth(month);
-    setSelectedDate(prev => ({ ...prev, month }));
+  setSelectedDate((prev) => ({ ...prev, month}));
+
 
     if (month === 0) {
       setSelectedYears(year);
+      
     }
     if (month === 11) {
       setSelectedYears(year);
+    
     }
   };
 
@@ -44,9 +55,10 @@ const DatePicker = ({ values, current }) => {
   }
 
   
-  const formatValue = `${selectedDate.day}-${parseInt(selectedMonth) + 1}-${selectedYear}`;
+  const formatValue = `${selectedDate.day}-${parseInt(selectedMonth) +1}-${selectedYear}`;
 
 
+  // console.log("test",selectedYear)
 
 
   useEffect(() => {
