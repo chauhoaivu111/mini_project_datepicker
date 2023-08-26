@@ -11,9 +11,9 @@ const DatePicker = ({ values, current }) => {
   const [today, setToday] = useState("");
 
 
-  const [selectedDate,setSelectedDate] = useState({
+  const [selectedDate, setSelectedDate] = useState({
     year: selectedYear,
-    month:selectedMonth,
+    month: selectedMonth,
     day: currentDate.getDate()
 
   })
@@ -24,7 +24,7 @@ const DatePicker = ({ values, current }) => {
       year: selectedYear,
       month: selectedMonth,
     }));
-  }, [selectedYear, selectedMonth]);  
+  }, [selectedYear, selectedMonth]);
 
 
 
@@ -34,28 +34,25 @@ const DatePicker = ({ values, current }) => {
 
   };
 
-  const [previousSelectedMonth, setPreviousSelectedMonth] = useState(selectedMonth);
+
   // console.log("previous",previousSelectedMonth)
 
   const handleChangeMonths = (month, year) => {
 
 
-    if (month !== selectedMonth) {
-    
-      setPreviousSelectedMonth(selectedMonth);
-    }
+
 
     setSelectedMonth(month);
-  setSelectedDate((prev) => ({ ...prev, month}));
+    setSelectedDate((prev) => ({ ...prev, month }));
 
 
     if (month === 0) {
       setSelectedYears(year);
-      
+
     }
     if (month === 11) {
       setSelectedYears(year);
-    
+
     }
   };
 
@@ -64,22 +61,43 @@ const DatePicker = ({ values, current }) => {
 
   }
 
- console.log("testday",selectedDate.day)
+  //  console.log("testday",selectedDate.day)
 
-const abc = selectedDate.day === currentDate.getDate()
+  // console.log(abc)
 
-console.log(abc)
-
-const [test,setTest] = useState()
+  const [isClicked, setIsClicked] = useState()
 
 
-console.log("testdatew",test)
+  // console.log("isClicked",isClicked)
+
+
+  const [isSelectedMonth, setIsSelectedMonth] = useState()
+  const [isSelectedYear, setIsSelectedYear] = useState()
+
+  const [updateMonth, setUpdateMonth] = useState()
+  const [updateYear, setUpdateYear] = useState()
+
+
+
+  useEffect(() => {
+    if (isClicked === undefined) {
+      setUpdateMonth(currentDate.getMonth() + 1);
+      setUpdateYear(currentDate.getFullYear());
+    } else {
+      setUpdateMonth(parseInt(selectedMonth) + 1);
+      setUpdateYear(selectedYear)
+    }
+  }, [isSelectedMonth, isSelectedYear, (selectedMonth), selectedYear]);
+
 
   
-  const formatValue = `${selectedDate.day}-${parseInt(selectedDate.month) +1}-${selectedYear}`;
 
 
-  // console.log("test",selectedYear)
+
+
+  const formatValue = `${selectedDate.day}-${parseInt(updateMonth)}-${updateYear}`;
+
+
 
 
   useEffect(() => {
@@ -132,7 +150,7 @@ console.log("testdatew",test)
               handleChangeMonths={handleChangeMonths}
               selectedYears={selectedYear}
             />
-            <Dates selectedDate={selectedDate} handleChangeDates={handleChangeDates} today={setTest} />
+            <Dates selectedDate={selectedDate} handleChangeDates={handleChangeDates} isSelectedMonth={setIsSelectedMonth} isSelectedYear={setIsSelectedYear} isClicked={setIsClicked} />
           </div>
         )}
       </div>

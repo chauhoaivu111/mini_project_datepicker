@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState} from "react";
 
-const dates = ({ selectedDate, handleChangeDates, today }) => {
+const dates = ({ selectedDate, handleChangeDates, isSelectedMonth,isClicked,isSelectedYear }) => {
   // get current date
   const currentDate = new Date();
 
@@ -15,24 +15,18 @@ const dates = ({ selectedDate, handleChangeDates, today }) => {
 
   
 
-const month = selectedDate.month
-const year = selectedDate.year
-
-const [lockMonth,setLockmonth] = useState()
-const [lockYear,setLockyear] = useState()
-
 
   const handleChangeDate = (daymumber) => {
     handleChangeDates(daymumber);
-    setLockmonth(month)
-    setLockyear(year)
-    today(selectedDate.month)
+    isSelectedMonth(selectedDate.month)
+    isSelectedYear(selectedDate.year)
+    isClicked(true)
+
+  
    
    
   };
 
- 
-  // console.log(selectedDate.month)
 
   const isLeapYear = (year) => {
     if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
@@ -97,8 +91,11 @@ const [lockYear,setLockyear] = useState()
           {isValidDay === true ? (
             <button
               onClick={() => handleChangeDate(dayNumber)}
-              className={`
+              className={` 
+              
                 ${
+                  
+
                   current.day === dayNumber
                     ? current.month === selectedDate.month &&
                       current.year === selectedDate.year
@@ -107,11 +104,12 @@ const [lockYear,setLockyear] = useState()
                     : ""
                 }
                 ${
-                  selectedDate.day === dayNumber    && lockMonth === selectedDate.month && lockYear === selectedDate.year
+                  selectedDate.day === dayNumber  && current.day !== dayNumber
                     ? "button-date"
                     : ""
                 }
-             
+             && lockYear === selectedDate.year
+             && lockMonth === selectedDate.month 
                 `}
             >
               {dayNumber}

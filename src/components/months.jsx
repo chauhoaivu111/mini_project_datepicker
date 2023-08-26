@@ -1,6 +1,6 @@
 import React from "react";
 
-const Month = ({ selectedMonth, selectedYears, handleChangeMonths }) => {
+const Month = ({selectedMonth, selectedYears, handleChangeMonths }) => {
   const months = [
     "January",
     "February",
@@ -16,6 +16,8 @@ const Month = ({ selectedMonth, selectedYears, handleChangeMonths }) => {
     "December",
   ];
 
+
+  // console.log(selectedMonth)
  
   const handleChangeMonth = (monthChange) => {
     const monthsInYear = 12;
@@ -28,11 +30,12 @@ const Month = ({ selectedMonth, selectedYears, handleChangeMonths }) => {
     // console.log("newmonht",newMonth)
     
 
-
+    // console.log(typeof(newMonth))
 
 
   };
 
+  
 
 
   const handleNextMonth = () => {
@@ -46,9 +49,11 @@ const Month = ({ selectedMonth, selectedYears, handleChangeMonths }) => {
 
   const handleChange = (e) => {
     const value = e.target.value;
-    handleChangeMonths(value);
+    handleChangeMonths(parseInt(value));
+    // console.log((value))
   };
 
+  
 
   return (
     <div className="main-framemonths">
@@ -56,9 +61,9 @@ const Month = ({ selectedMonth, selectedYears, handleChangeMonths }) => {
         ➤
       </button>
       <div className="frame-month-year-head">
-        <select value={selectedMonth} onChange={handleChange}>
+        <select value={parseInt(selectedMonth)} onChange={handleChange}>
           {months.map((month, index) => (
-            <option key={month} value={index}>
+            <option key={month} value={(index)}>
               {month}
             </option>
           ))}
