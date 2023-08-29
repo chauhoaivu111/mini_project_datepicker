@@ -1,0 +1,66 @@
+@use "../../sass/" as *;
+
+.main-date {
+  border-color: inherit;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.button-date {
+  background-color: $button-date-selected;
+  background-image: linear-gradient(
+    19deg,
+    $button-date-selected 0%,
+    $button-date-img 100%
+  );
+  color: $bg-color !important;
+}
+
+.button-focus-today {
+  border: 1px solid $border-button-focus-today !important ;
+  background-color: $button-focus-today;
+  background-image: linear-gradient(
+    45deg,
+    $button-focus-today 0%,
+    $button-focus-today-img 100%
+  );
+  color: $color-text !important;
+}
+
+.default-buton {
+  border-radius: 100%;
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  @include flex(center, center);
+  margin: auto;
+  font-weight: 600;
+  color: $color-text;
+
+  &:hover {
+    background-color: $button-date-selected;
+    background-image: linear-gradient(
+      19deg,
+      $button-date-selected 0%,
+      $button-date-img 100%
+    );
+
+    transition: background-color 0.3s;
+  }
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+th {
+  font-size: 1rem;
+}
+tr {
+  font-family: $font-family;
+
+  color: $color-title;
+}

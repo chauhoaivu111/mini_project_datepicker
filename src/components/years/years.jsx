@@ -1,6 +1,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
-import YearButton from "./YearButton"
+import YearButton from "./YearButton";
+import './Years.scss'
 
 
 const currentYear = new Date().getFullYear();

@@ -1,28 +1,30 @@
 import React from "react";
-import { getMaxDaysInMonthArray } from "./utils";
+import { getMaxDaysInMonthArray } from "./LeapYears";
 
-const GridDate = ({row,selectedDate,handleChangeDate,current,isClick,lastDayOfMonth,}) => {
-
-  
-  // console.log("click",isClick)
-
-  const orderOfDay = new Date(selectedDate.year,selectedDate.month,1).getDay();
+const GridDate = ({
+  row,
+  selectedDate,
+  handleChangeDate,
+  current,
+  isClick,
+  lastDayOfMonth,
+}) => {
+  const orderOfDay = new Date(
+    selectedDate.year,
+    selectedDate.month,
+    1
+  ).getDay();
 
   const maxDaysInMonth = getMaxDaysInMonthArray(selectedDate.year);
 
   const gridDate = () => {
     const dayColumn = [];
 
-    
-    // console.log("test",selectedDate.day)
-    // console.log(isClick)
-
     for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
       const dayNumber = (row - 1) * 7 + dayIndex - orderOfDay + 1;
 
-      const isValidDay = dayNumber >= 1 && dayNumber <= maxDaysInMonth[selectedDate.month];
-
-
+      const isValidDay =
+        dayNumber >= 1 && dayNumber <= maxDaysInMonth[selectedDate.month];
 
       dayColumn.push(
         <td key={dayIndex}>
@@ -40,15 +42,18 @@ const GridDate = ({row,selectedDate,handleChangeDate,current,isClick,lastDayOfMo
                     : ""
                 }
                 ${
-                  (selectedDate.day === dayNumber && isClick === true)
-                 
+                  selectedDate.day === dayNumber && isClick === true
                     ? "button-date"
                     : ""
                 }
-                ${(selectedDate.day > lastDayOfMonth  && isClick === true &&
-                  lastDayOfMonth === dayNumber )
-                 ? "button-date"
-                 : ""}
+                ${
+                  selectedDate.day > lastDayOfMonth &&
+                  isClick === true &&
+                  lastDayOfMonth === dayNumber
+                    ? "button-date"
+                    : ""
+                }
+                ${"default-buton"}
                 
                 `}
             >

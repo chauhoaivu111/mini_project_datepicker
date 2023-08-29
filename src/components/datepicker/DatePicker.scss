@@ -1,0 +1,88 @@
+@use "../../sass/" as *;
+
+.main-datepicker {
+  box-shadow: $box-shadow;
+  width: 24.4%;
+  border-radius: 10px;
+  margin-top: -1.6rem;
+  box-sizing: border-box;
+  background-color: $bg;
+  background-image: linear-gradient(62deg, $bg 0%, $bg-image 100%);
+ 
+  @include tablet {
+
+    width: 54%;
+    margin: auto;
+    margin-top: -1rem;
+  }
+
+  @include mobile {
+    width: 90%;
+    margin: auto;
+    margin-top: -1rem
+  }
+}
+
+.main-input {
+  @include flex(center, space-between);
+  width: 26%;
+
+  @include tablet {
+    width: 39%;
+    margin: auto ;
+  }
+  
+  @include mobile {
+    width: 80%;
+    margin: auto;
+  }
+  .img-button {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 100%;
+    @include tablet {
+      margin-left: -2rem !important;
+    }
+
+     
+
+    
+ 
+  
+
+    img {
+      width: 100%;
+      height: 100%;
+      margin-left: -2.5rem ;
+      @include tablet {
+        margin-left: 0px;
+        margin-right: 1px !important;
+      }
+  
+      @include mobile {
+        margin-left: 0px ;
+      }
+      &:hover {
+        background-color: $bg-icon;
+      }
+    }
+  }
+  input {
+    height: 2rem;
+    width: 23.7rem;
+    outline: none;
+    border: $border-input;
+    padding-left: 1rem;
+    border-radius: 5px;
+    font-size: 1.1rem;
+
+    @include tablet{
+      margin: auto !important;
+    }
+    @include mobile {
+     
+      // margin-left: 0px !important;
+      width: 100%
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import "./Months.scss"
 
 const Month = ({selectedMonth, selectedYears, handleChangeMonths }) => {
   const months = [
@@ -45,8 +46,8 @@ const Month = ({selectedMonth, selectedYears, handleChangeMonths }) => {
 
   return (
     <div className="main-framemonths">
-      <button onClick={previous} className="button-icon-prev">
-        ➤
+      <button onClick={previous} className="button-icon">
+      ⏪
       </button>
       <div className="frame-month-year-head">
         <select value={parseInt(selectedMonth)} onChange={handleChange}>
@@ -58,8 +59,8 @@ const Month = ({selectedMonth, selectedYears, handleChangeMonths }) => {
         </select>
       </div>
 
-      <button onClick={handleNextMonth} className="button-icon-next">
-        ➤
+      <button onClick={handleNextMonth} className="button-icon">
+      ⏩
       </button>
     </div>
   );

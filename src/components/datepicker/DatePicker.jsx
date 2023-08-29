@@ -2,13 +2,15 @@
 
 
 import React, { useState, useEffect, useRef } from "react";
-import Months from "./months/months";
-import Dates from "./dates/dates";
-import Years from "./years/years";
+import "./DatePicker.scss";
+import calendar from "../../assets/calendar.png"
+import Months from "../months/Months";
+import Dates from "../dates/Dates";
+import Years from "../years/Years";
 
 const currentDate = new Date();
 
-const DatePicker = ({ values, current, placeholder }) => {
+const DatePicker = ({  values = () => {}, current, placeholder }) => {
   const [selectedDate, setSelectedDate] = useState({
     year: currentDate.getFullYear(),
     month: currentDate.getMonth(),
@@ -20,7 +22,6 @@ const DatePicker = ({ values, current, placeholder }) => {
   const [today, setToday] = useState(placeholder);
   const [lastDayOfMonth,setLastDayOfMonth] = useState()
 
-  // console.log(isClicked)
 
   const handleChangeYears = (year) => {
     setSelectedDate((prevDate) => ({
@@ -76,11 +77,7 @@ const DatePicker = ({ values, current, placeholder }) => {
     };
   }, []);
 
-  // console.log(isClicked)
-  // console.log(current)
-  
 
-  // console.log(selectedDate.day)
 
   useEffect(() => {
     const formattedValue = `${selectedDate.day >= lastDayOfMonth ? lastDayOfMonth : selectedDate.day }-${parseInt(selectedDate.month) + 1}-${selectedDate.year}`;
@@ -103,9 +100,12 @@ const DatePicker = ({ values, current, placeholder }) => {
 
   return (
     <div>
-      <div ref={popoverRef}>
+      <div ref={popoverRef} className="main-input">
         <input placeholder={today} />
-        <button onClick={handleOpen}>open</button>
+        <div className="img-button">
+        <img src={calendar} alt="" onClick={handleOpen} />
+        </div>
+      
       </div>
 
       <div>

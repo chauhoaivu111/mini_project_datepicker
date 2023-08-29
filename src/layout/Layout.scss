@@ -1,0 +1,40 @@
+@use "../sass/" as *;
+
+.App {
+ 
+
+
+  margin-top: 10%;
+  margin-left: 5%;
+
+  @include tablet {
+    margin-left: 0px;
+
+  }
+
+  @include mobile {
+    margin-left: 0px
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
+select option {
+  cursor: pointer;
+}
+
+img {
+  cursor: pointer;
+}
+
+
+
+h4 {
+  cursor: pointer;
+}
+
+select {
+cursor: pointer;
+}

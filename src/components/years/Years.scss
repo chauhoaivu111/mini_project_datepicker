@@ -1,0 +1,66 @@
+@use "../../sass/" as *;
+
+.main-frame-year {
+  width: 100%;
+  margin-bottom: -2rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.frame-year {
+  position: relative;
+  margin-top: 2rem;
+  text-align: center;
+  width: 100%;
+  color: $color-title;
+  padding-top: 0.6rem;
+  font-size: 1.2rem;
+}
+
+.main-popover {
+  width: 22.6rem;
+  height: 20rem;
+  cursor: pointer;
+  display: grid;
+  overflow-y: auto;
+  position: absolute;
+  grid-template-columns: $repeat-grid;
+  background-color: $bg-color;
+  box-shadow: $box-shadow;
+  border-radius: 10px;
+  margin-top: 1rem;
+  z-index: 1000;
+ 
+
+  @include tablet {
+    width: 49%;
+  }
+
+  @include mobile {
+    width: 80%;
+  }
+
+  button {
+    width: 80%;
+    margin-top: 1rem;
+    height: 2rem;
+    border-radius: 10px;
+    // can reduce button height
+    border: 0px;
+    font-size: 1rem;
+    font-family: $font-family;
+    font-weight: $font-weight;
+  }
+}
+
+.button-year-Today {
+  border: $border-button !important;
+}
+
+.button-focus-year {
+  background-color: $button-focus-bg;
+  background-image: linear-gradient(
+    90deg,
+    $button-focus-bg 0%,
+    $butt-focus-img 100%
+  );
+}
